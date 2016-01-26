@@ -1,6 +1,6 @@
 #Autores:  Bernardo Marques e Gabriel Pimentel
 
-package openFile;
+package contagemCaracteres;
 
 use warnings;
 use strict;
@@ -19,11 +19,14 @@ our @EXPORT = qw(
 our $VERSION = '0.01';
 
 sub contagemCaracteres {
+	(my $arquivo) =@_;
+	my $tamanhoString = 0;
+	my $string;
 	
-	MyModule::openFile(, $string);
-	my $tamanhoString = length($string);
+	$string = openFile::openFile($arquivo);
+	$tamanhoString = length($string);
 	
-	print "O tweet tem ", $tamanhoString, "caracteres";
+	print "O tweet tem ", $tamanhoString, " caracteres";
 	
 }
 
