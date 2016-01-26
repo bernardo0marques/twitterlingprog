@@ -3,7 +3,7 @@ use strict;
 use warnings;
  
 use openFile ':all';
-#use func1 ':all';
+use listHashtagMention ':all';
 #use func2 ':all';
 #use func3 ':all';
 #use func4 ':all';
@@ -13,4 +13,8 @@ use openFile ':all';
 my $texto = openFile::openFile('teste.txt');
 
 print $texto;
+
+print "Listagem: \n";
+
+listHashtagMention::listHashtagMention('teste.txt');
 

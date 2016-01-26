@@ -19,7 +19,7 @@ our $VERSION = '0.01';
 
 sub printarPaginaUser{
 	(my $nomedoarquivo) =  @_;
-	openFile ($nomeDoArquivo, $string); # abre arquivo e passa para string.
+	$string = openFile ($nomeDoArquivo) # abre arquivo e passa para string.
 	print "A pagina do user e:"\n, $string \n; #printa a string na tela
 	return 0;
 }
