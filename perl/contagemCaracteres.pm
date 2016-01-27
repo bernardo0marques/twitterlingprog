@@ -1,6 +1,6 @@
 #Autores:  Bernardo Marques e Gabriel Pimentel
 
-package contagemCaracteres;
+package ContagemCaracteres;
 
 use warnings;
 use strict;
@@ -11,6 +11,9 @@ our %EXPORT_TAGS = ( 'all' => [qw(
 ) ] );
 
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+
+require Exporter;
+our @ISA = qw(Exporter);
 
 our @EXPORT = qw(
 	contagemCaracteres
@@ -26,7 +29,7 @@ sub contagemCaracteres {
 	$string = openFile::openFile($arquivo);
 	$tamanhoString = length($string);
 	
-	print "O tweet tem ", $tamanhoString, " caracteres";
+	print "O tweet tem ", $tamanhoString, " caracteres. \n";
 	
 }
 
