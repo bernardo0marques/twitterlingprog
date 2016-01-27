@@ -103,30 +103,6 @@ sub listHashtagMention { #listar hashtags que foram usadas na pagina do user pes
 
 
 
-sub dateValeu { 
-	(my $nomedoArquivo)= @_;
 
-	my @mes = ["Jan", "Fev", "Mar", "May","Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-	my $year;
-	my $month;
-	my $day;
-	my $hour;
-	my $minute;
-	my $second;
-	my $counter;
-
-
-	my $string = openFile($nomedoArquivo); #chamada de funcao para abrir o arquivo e passá-lo para uma string - REVER
-
-
-
-	my @line;
-	foreach $string (@line) {	
-		my ($date) = $string =~ /(\Date:.*)\s*$/;
-		print $date;
-
-	}
-		return 0;
-}
 
 1;
