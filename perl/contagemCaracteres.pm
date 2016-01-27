@@ -1,6 +1,6 @@
 #Autores:  Bernardo Marques e Gabriel Pimentel
 
-package ContagemCaracteres;
+package contagemCaracteres;
 
 use warnings;
 use strict;

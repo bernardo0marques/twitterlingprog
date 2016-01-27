@@ -1,36 +1,56 @@
 use strict;
 use warnings;
-<<<<<<< HEAD
 use 5.012;
 
+require Exporter;
+our @ISA = qw(Exporter);
+
+use Switch;
+
 use openFile;
+use listHashtagMention;
 use searchWords;
 use contagemCaracteres;
-use listHashtagMention;
-=======
- 
-use openFile;
-#use listHashtagMention;
-#use searchWords;
-#use ContagemCaracteres;
 use dateValue;
-#use TwitterPerl;
-#use func4 ':all';
-#use func5 ':all';
- 
+#use TwitterPerl; - Quando tudo estiver funcionando usaremos esse package
 
-#my $texto = openFile('teste.txt');
-#print $texto;
-#print $texto;
+my $option;
+my $arquivo;
 
-#print "Listagem: \n";
+print "Menu";
+print "1 - Listar hashtags e mentions";
+print "2 - Procura de Palavras";
+print "3 - Contagem de Caracteres de um tweet";
+print "4 - Avaliação da data do tweet";
+print "5 - Quantidade de retweets de um determinado tweet";
+print "Escolha uma opcao: ";
 
-dateValue('date1.txt');
+$option = <STDIN>;
 
-#listHashtagMention('teste.txt');
-
-#print "Procura de Hashtags: \n";
-
-#searchWords('teste.txt');
->>>>>>> ae11d7e2374ef889b9b1a0eb6d9e38547f74aef0
-
+switch ($option) {
+	case 1 {
+		print "Entre com o nome do arquivo que voce quer abrir com o formato: ";
+		$arquivo = <STDIN>;
+		listHashtagMention($arquivo);
+	}
+	case 2 {
+		print "Entre com o nome do arquivo que voce quer abrir com o formato: ";
+		$arquivo = <STDIN>;
+		searchWords($arquivo);
+	}
+	case 3 {
+		print "Entre com o nome do arquivo que voce quer abrir com o formato: ";
+		$arquivo = <STDIN>;
+		contagemCaracteres($arquivo);
+	}
+	case 4 {
+		print "Entre com o nome do arquivo que voce quer abrir com o formato: ";
+		$arquivo = <STDIN>;
+		dateValue($arquivo);
+	}
+	case 5 {
+		print "Entre com o nome do arquivo que voce quer abrir com o formato: ";
+		$arquivo = <STDIN>;
+		quantidadeRetweets($arquivo);
+	}
+}

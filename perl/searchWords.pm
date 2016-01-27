@@ -2,6 +2,7 @@
 
 package searchWords;
 
+use openFile;
 use warnings;
 use strict;
 use 5.012;
@@ -36,7 +37,8 @@ sub searchWords{
 	print "Qual palavra voce procura? ";
 	$palavraProcurada = <STDIN>;
 	
-	foreach $str (@line) { 
+	foreach $str (@line) {
+		 
 		if ($str =~ $palavraProcurada){ #busca da palavra
 			$countPalavras++;
 		}
