@@ -28,25 +28,21 @@ sub searchWords{
 	my $palavraProcurada;
 	
 	$string = openFile::openFile($nomedoArquivo);
-	@line = split (/\s+/, $string);
+	@line = split ('/\s+/', $string);
 	
 	print "Qual palavra voce procura? ";
 	$palavraProcurada = <STDIN>;
 	
-	foreach $str (@line) {
-		print @line;
-		
-		if ($str =~ 'oi'){ #busca da palavra
-			print $str;
+	foreach $str (@line) { 
+		if ($str =~ $palavraProcurada){ #busca da palavra
 			$countPalavras++;
-			
-		 }
+		}
 	}
 	if ($countPalavras == 0){
 			print "Nao foi encontrada a palavra procurada ", $palavraProcurada;
 		}
 		if ($countPalavras>0){
-			print "Foi encontrada a palavra procurada ", $palavraProcurada, ",", $countPalavras, "vezes";
+			print "Foi encontrada a palavra procurada ",$palavraProcurada, $countPalavras, "vez(es)";
 		}
 }
 
