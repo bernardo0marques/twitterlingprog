@@ -14,15 +14,14 @@ our @EXPORT = qw(
 	openFile
 );
 
+require Exporter;
+our @ISA = qw(Exporter);
+
 our $VERSION = '0.01';
 
 
 sub openFile  { 
 		(my $fileName) = @_;
-
-#my $filename = $fileName;
-#open(my $fh, '<:encoding(UTF-8)', $fileName) or die "Could not open file '$fileName' $!";
-
 #####################################
 ## Printa o conteudo do txt na tela. 
 #####################################
