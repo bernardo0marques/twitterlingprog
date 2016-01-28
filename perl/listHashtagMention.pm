@@ -38,11 +38,11 @@ sub listHashtagMention { #listar hashtags que foram usadas na pagina do user pes
 	# \s matches any whitespace character (space, tab, newline)
 	
 	foreach $str (@line) {		
-		if ($str =~ /^#\w+/){  #procura hashtags e vai até o proximo espaço em branco
+		if ($str =~ /^#\w+/){  #procura palavras que o primeiro caracter é # e vai até o proximo espaço em branco
 			$countHashtags++;
 			@hashtags = (@hashtags,$str);
 		}
-		if ($str =~ /^\@\w+/){
+		if ($str =~ /^\@\w+/){ #procura palavras que o primeiro caracter é @ e vai até o proximo espaço em branco
 			$countMentions++;
 			@mentions = (@mentions, $str);
 		}	 
@@ -50,13 +50,13 @@ sub listHashtagMention { #listar hashtags que foram usadas na pagina do user pes
 	
 	print "O numero de Hashtags encontradas e: ", $countHashtags, "\n";
 	print  "As hashtags usadas sao: ";
-	print  join(" , ", @hashtags);
+	print  join(" , ", @hashtags); #printa a @hashtags formatada com virgula entre os elementos
 	print "\n";
 	
 	
 	print "O numero de mentions encontradas e: ", $countMentions, "\n";
 	print  "As mentions usadas sao: ";
-	print  join(" , ", @mentions);
+	print  join(" , ", @mentions); #printa a @mentions formatada com virgula entre os elementos
 	print "\n";	
 	
 	return 0;

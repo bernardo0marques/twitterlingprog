@@ -21,11 +21,11 @@ our $VERSION = '0.01';
 
 
 sub openFile  { 
-		(my $fileName) = @_;
+		(my $fileName) = @_; #parametro para abertura da funcao
 #####################################
 ## Printa o conteudo do txt na tela. 
 #####################################
-open my $fh, '<', $fileName or die "Could not open '$fileName' $!\n";
+open my $fh, '<', $fileName or die "Could not open '$fileName' $!\n"; #comando para abrir o arquivo
  
  my $texto = ""; 
 
@@ -33,11 +33,11 @@ while (my $line = <$fh>) {
    chomp $line;
    my @strings = $line;
    foreach my $s (@strings) {
-     $texto = $texto . $s . "\n";
+     $texto = $texto . $s . "\n"; #concatena a variavel $texto com $s
    }
 }
 
-return $texto;
+return $texto; #retorna a string
 }
 ##### fechar o arquivo
 1;

@@ -5,13 +5,13 @@ use openFile;
 
 use warnings;
 use strict;
-use 5.012;
+use 5.012;  
 
-our %EXPORT_TAGS = ( 'all' => [qw(
+our %EXPORT_TAGS = ( 'all' => [qw(  
 
 ) ] );
 
-our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );  #Tags para modularizacao
 
 our @EXPORT = qw(
 	retweetStatus
@@ -29,7 +29,7 @@ sub retweetStatus {
 	#my @line;
 
 	$string = openFile($nomedoArquivo);
-	my @line = split (/,/, $string); #separa por virgula porque o JSON tem como padrao dividir por , 
+	my @line = split (/,/, $string); #separa por virgula porque o JSON tem como padrao dividir por ',', onde tem ',' ele substitui por \n (new line)  
  
 	#my $word = '"retweeted:"';
 
@@ -37,15 +37,15 @@ sub retweetStatus {
 
 	
 	foreach $str (@line) {		
-		if ($str =~ /"retweeted":false/){  #procura a palavra false no arquivo de texto
+		if ($str =~ /"retweeted":false/){  #procura essa regex no arquivo de texto (.json)
 			print "Esse tweet nao foi retweetado \n";
 		}
-		if ($str =~ /"retweeted":true/){  #procura a palavra true no arquivo de texto
+		if ($str =~ /"retweeted":true/){  #procura essa regex no arquivo de texto (.json)
 			print "Esse tweet foi retweetado \n";
 		}
 	}
 	#foreach $str (@line) {		
-	#	if ($nextStr =~ /true/){  #procura a palavra false no arquivo de texto
+	#	if ($nextStr =~ /true/){  #procura essa regex no arquivo de texto
 	#		
 	#		print "Esse tweet foi retweetado \n";
 	#	}

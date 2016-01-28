@@ -2,6 +2,7 @@
 
 package contagemCaracteres;
 
+use openFile;
 use warnings;
 use strict;
 use 5.012;
@@ -26,8 +27,8 @@ sub contagemCaracteres {
 	my $tamanhoString = 0;
 	my $string;
 	
-	$string = openFile::openFile($arquivo);
-	$tamanhoString = length($string);
+	$string = openFile($arquivo);
+	$tamanhoString = length($string); #funcao length conta os caracteres do arquivo inserido
 	
 	print "O tweet tem ", $tamanhoString, " caracteres. \n";
 	
