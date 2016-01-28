@@ -53,12 +53,12 @@ chomp($option); #remove \n que foi inserido quando option foi inserido!
     		chomp($arquivo);
     		contagemCaracteres($arquivo);
     	}
-    	#case 4 {
-    	#	print "Entre com o nome do arquivo que voce quer abrir com o formato: ";
-    	#	$arquivo = <STDIN>;
-    	#	chomp($arquivo);
-    	#	dateValue($arquivo);
-    	#}
+    	case 4 {
+    		print "Entre com o nome do arquivo que voce quer abrir com o formato: ";
+    		$arquivo = <STDIN>;
+    		chomp($arquivo);
+    		dateValue($arquivo);
+    	}
     	case 5 {
     		print "Entre com o nome do arquivo que voce quer abrir com o formato: ";
     		$arquivo = <STDIN>;
