@@ -1,4 +1,5 @@
 #Autores : Gabriel Pimentel e Bernardo Marques
+
 package retweetStatus;
 
 use openFile;
@@ -31,9 +32,9 @@ sub retweetStatus {
 	$string = openFile($nomedoArquivo);
 	my @line = split (/\s+/, $string);
 
-	#my $word = '"retweeted:"';
+	my $word = '"retweeted:"';
 
-	#my $nextStr = /$word\s*?(\S+)/;
+	my $nextStr = /$word.+/;
 
 	
 	foreach $str (@line) {		
@@ -44,13 +45,13 @@ sub retweetStatus {
 			print "Esse tweet foi retweetado \n";
 		}
 	}
-	#foreach $str (@line) {		
-	#	if ($nextStr =~ /true/){  #procura a palavra false no arquivo de texto
-	#		
-	#		print "Esse tweet foi retweetado \n";
-	#	}
+	foreach $str (@line) {		
+		if ($nextStr =~ /true/){  #procura a palavra false no arquivo de texto
+			
+			print "Esse tweet foi retweetado \n";
+		}
 		
-	#}
+	}
 }
 
 1;
