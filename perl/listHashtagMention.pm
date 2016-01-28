@@ -31,6 +31,7 @@ sub listHashtagMention { #listar hashtags que foram usadas na pagina do user pes
 	my @mentions;
 	my $string;
 	my $str;
+	
 	$string = openFile($nomedoArquivo); #chamada de funcao para abrir o arquivo e passá-lo para uma string - REVER
 	my @line = split (/\s+/, $string); # todos espacos vazios sao removidos com essa expressao regular
 	# \s matches any whitespace character (space, tab, newline)
