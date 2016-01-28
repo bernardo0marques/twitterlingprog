@@ -33,7 +33,8 @@ sub listHashtagMention { #listar hashtags que foram usadas na pagina do user pes
 	my $str;
 	
 	$string = openFile($nomedoArquivo); #chamada de funcao para abrir o arquivo e passá-lo para uma string - REVER
-	my @line = split (/\s+/, $string); # todos espacos vazios sao removidos com essa expressao regular
+	my @line = split (/\s+/, $string); #  split a string into an array with the split occurring at the white spaces
+	#corta a string na ocorrencia de espacos em branco e joga em um array
 	# \s matches any whitespace character (space, tab, newline)
 	
 	foreach $str (@line) {		

@@ -29,8 +29,8 @@ sub retweetStatus {
 	#my @line;
 
 	$string = openFile($nomedoArquivo);
-	my @line = split (/\s+/, $string);
-
+	my @line = split (/,/, $string); #separa por virgula porque o JSON tem como padrao dividir por , 
+ 
 	#my $word = '"retweeted:"';
 
 	#my $nextStr = /$word\s*?(\S+)/;
