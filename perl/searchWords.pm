@@ -47,10 +47,10 @@ sub searchWords{
 		#print "\"", $str, "\"", "\"", $palavraProcurada, "\"", "\n";
 	}
 	if ($countPalavras == 0){
-			print "Nao foi encontrada a palavra procurada ", $palavraProcurada;
+			print "Nao foi encontrada a palavra procurada ", $palavraProcurada, ".\n";
 		}
 		if ($countPalavras>0){
-			print "Foi encontrada a palavra procurada '",$palavraProcurada, "', ", $countPalavras, "vez(es)";
+			print "Foi encontrada a palavra procurada '", $palavraProcurada, "', ", $countPalavras, "vez(es). \n";
 		}
 }
 
