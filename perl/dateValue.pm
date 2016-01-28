@@ -48,8 +48,18 @@ sub dateValue {
 	my $counterSys = 0;
 	my $fuso = 0;
 	
-	my $string = openFile($nomedoArquivo); #chamada de funcao para abrir o arquivo e passá-lo para uma string - REVER
-	
+	my $string;
+	my $subString = openFile($nomedoArquivo); #chamada de funcao para abrir o arquivo e passá-lo para uma string - REVER
+
+
+	my @subLine = split (/\n+/, $subString); # 
+
+	foreach $subString (@subLine) {		
+		if ($subString =~ /created_at:.+/){  #procura hashtags e vai até o proximo espaço em branco
+			$string = $subString;
+		}
+	}	
+
 ####################
 #### Extraindo data do tweet
 ####################
@@ -75,7 +85,6 @@ sub dateValue {
 #### Consideramos que os meses tem 30dias
 ####################
 	$fuso = $line[5];
-	print "$fuso\n";
 
 	$hour = $hour + ($fuso)*(-1);
 	if ($hour > 24 ){
@@ -103,8 +112,6 @@ sub dateValue {
 		}
 	}
 
-	print "$hour\n";
-
 
 ####################
 #### Extraindo data do sistema
@@ -112,8 +119,6 @@ sub dateValue {
 
     my $systemTime = localtime();
     my $globalTime = gmtime();
-    print "$globalTime\n";
-    print "$systemTime\n";
 
 
 
@@ -139,25 +144,48 @@ sub dateValue {
 	my $dayDif = 0;
 	my $hourDif = 0;
 	my $minuteDif = 0;
+	my $secondDif = 0;
 
-
+	print "$yearDif\n";
 		if ($yearDif == 0){
 			$monthDif = $monthSys - $month;
+			print "$monthDif\n";
 			if ($monthDif == 0){
 				$dayDif = $daySys - $day;
+				print "$dayDif\n";
 				if ($dayDif == 0) {
 					$hourDif = $hourSys - $hour;
 					if ($hourDif == 0){
 						$minuteDif = $minuteSys - $minute;
-						if ($minuteDif == 0) {print "Quase agora.\n"}
+						if ($minuteDif == 0){ #{print "Quase agora.\n"}
+							$secondDif = $secondSys - $second;
+							print "$secondDif segundos atrás.\n";
+						}
+						elsif ($minuteDif == 1) {
+							$secondDif = (60 - $second) + $secondSys;
+							if ($secondDif > 60) {print "Mais de 1 minuto atrás.\n"}
+						}
+						else {print "Aproximadamente $secondDif segundos atrás. "}
 					}
-					elsif ($hourDif > 0){print "Mais de $hourDif horas atrás.\n"}
+					elsif ($hourDif == 1) {
+						$minuteDif = (60 - $minute) + $minuteSys;
+						if ($minuteDif > 60) {print "Mais de 1 hora atrás.\n"}
+						else {print "Aproximadamante $minuteDif minutos atrás\n"}
+					}
+					else {print "Mais de $hourDif horas atrás.\n"}
 				}
-				elsif ($dayDif > 0) {print "Mais de $dayDif dias atrás.\n"}
+				elsif ($dayDif == 1) {
+					$hourDif = (24 - $hour) + $hourSys;
+					if ($hourDif > 24) {print "Mais de 1 dia atrás.\n"}
+					else {print "Mais de $hourDif horas atrás.\n"}
+				}
+				else {print "Mais de $dayDif dias atrás.\n"}
+				
 			}
 			elsif($monthDif == 1){
 				$dayDif = (30 - $day) + $daySys;
 				if ($dayDif > 30) {print "Mais de um mes atrás.\n";}
+				else {print "Mais de $dayDif dias atrás.\n";}
 			}
 			else{print "Mais $monthDif meses atrás.\n"}
 		}
@@ -166,7 +194,7 @@ sub dateValue {
 			if ($monthDif >= 12) {print "Mais de um ano atrás.\n"}
 			else {print "Mais de $monthDif meses atrás.\n"}
 		}
-		else {print "Mais de um ano.\n"}
+		else {print "Mais de $yearDif anos atrás.\n"}
 
 
 		return 0;
