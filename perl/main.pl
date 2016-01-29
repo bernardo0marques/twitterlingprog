@@ -33,7 +33,8 @@ sub readOption {
     chomp($arquivo);
 }
 
-START:
+while (1) {
+
 if ($option != 6){
     printMenu();
     readSTDIN();
@@ -42,5 +43,9 @@ if ($option != 6){
     elsif ($option == 3) {readOption(); contagemCaracteres($arquivo);}
     elsif ($option == 4) {readOption(); dateValue($arquivo);}
     elsif ($option == 5) {readOption(); retweetStatus($arquivo);}
-    else  {goto START;}
+    elsif ($option == 6) {exit;}
+    else  {
+        print"Insira um numero de 1 a 6";
+        }
+}
 }
