@@ -1,0 +1,6 @@
+Teste da função 2
+
+palavra para ser pesquisada
+
+bandejão
+lingprog
