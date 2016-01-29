@@ -53,7 +53,7 @@ return $texto; #retorna a string
 ####################################################################################################
 ### 1 - listHashtagMention
 ####################################################################################################
-### função que conta e lista quais foram as @ e # do tweet
+### função que conta e lista quais foram as @(mentions) e as #(hashtags) do tweet.
 ####################################################################################################
 
 sub listHashtagMention { #listar hashtags que foram usadas na pagina do user pesquisada.
@@ -205,6 +205,7 @@ sub dateValue {
 
 #---------------------------------------------------------------------------------------------------
 # Normalizando fuso horário do tweet recebido para comparação.
+# Para simplificar a normalização só foram tratados fuso horários inteiros e também.
 #---------------------------------------------------------------------------------------------------
 	$fuso = $line[5];
 
@@ -258,7 +259,10 @@ sub dateValue {
 	$secondSys = $lineSys2[2];
 
 #---------------------------------------------------------------------------------------------------
-# rotina que compara a data do tweet com a referencia do sistema e gera a estimativa.
+# Rotina que compara a data do tweet com a referência do sistema e gera a estimativa.
+# Para simplificar a comparação todos os meses foram considerados com 30 dias.
+# Não foi tratado o caso em que o tempo do sistema é mais antigo que o tempo do tweet pois não é 
+# possível obter uma data futura a partir da API do twitter.
 #---------------------------------------------------------------------------------------------------
 	my $yearDif = $yearSys - $year;
 	my $monthDif = 0;
@@ -304,7 +308,7 @@ sub dateValue {
 				if ($dayDif > 30) {print "Mais de um mes atrás.\n";}
 				else {print "Mais de $dayDif dias atrás.\n";}
 			}
-			else{print "Mais $monthDif meses atrás.\n"}
+			else{print "Mais de $monthDif meses atrás.\n"}
 		}
 		elsif ($yearDif == 1){
 			$monthDif = (12 - $month) + $monthSys;
@@ -312,14 +316,14 @@ sub dateValue {
 			else {print "Mais de $monthDif meses atrás.\n"}
 		}
 		else {print "Mais de $yearDif anos atrás.\n"}
-		
+
 		return 0;
 }
 
 ####################################################################################################
 ### 5 - retweetStatus
 ####################################################################################################
-### funcão que diz se o tweet é um retweet ou não
+### funcão que diz se o tweet é original ou se é uma réplica de outro tweet.
 ####################################################################################################
 
 sub retweetStatus {
