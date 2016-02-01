@@ -1,5 +1,6 @@
 #include <iostream>
 #include "twitcurl.h"
+#include "oauthlib.h"
 #include "include/curl/curl.h"
 #include "include/curl/curlrules.h"
 #include "include/curl/easy.h"
@@ -13,17 +14,18 @@
 int main(){
 	
 	twitCurl tweet;
-	string* const username;
-	string* const password;
+	string const m_twitterUsername;
+	
+	string const m_twitterPassword;
 
 
 	cout <<"Insira seu username:"<<endl;
-	getline (cin,username);
-	twitCurl.setTwitterUsername(username);
+	getline (cin,m_twitterUsername);
+	tweet.setTwitterUsername(m_twitterUsername);
 
 	cout<<"Insira seu password"<<endl;
-	getline(cin, password);
-	twitCurl.setTwitterPassword(password);
+	getline(cin, m_twitterPassword);
+	tweet.setTwitterPassword(m_twitterPassword);
 
 
 }
